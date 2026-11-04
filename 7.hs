@@ -1,9 +1,10 @@
 -- Desafios de Listas
 
--- 1 Questionário
 -- 1. Implementar a função slice, que devolve um pedaço interno de uma lista:
 -- *Main> slice 3 7 [’a’,’b’,’c’,’d’,’e’,’f’,’g’,’h’,’i’,’k’]
 -- "cdefg"
+slice :: Int -> Int -> []
+
 
 -- 2. Implementar a função compress que elimina elementos repetidos consecu-
 -- tivos

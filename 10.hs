@@ -1,5 +1,3 @@
--- Exercícios sobre Listas III
-
 -- 1 Questionário
 -- 1. Implementar a função pegaPosicao
 -- > pegaPosicao 3 [10,2,11,4,5]

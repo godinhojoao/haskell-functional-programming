@@ -1,7 +1,5 @@
 # Haskell Functional Programming
 
-- ...
-
 ## How to run
 - `ghci` -> `:l ./file.hs` -> use your file's functions
 or

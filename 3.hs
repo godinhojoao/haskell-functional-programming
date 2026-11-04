@@ -56,18 +56,23 @@ generateList m n = n:generateList (m-1) n
 -- que recebe um inteiro, uma lista e adiciona o elemento no fim da lista (sem usar o ++):
 -- > addFim 10 [1,2]
 -- [1,2,10]
-append :: Int -> [Int] -> [Int]
-append a lis
-  |
+addFim :: Int -> [Int] -> [Int]
+addFim n [] = [n]
+addFim n (x:xs) = x : addFim n xs
 
 -- (8) Implementar a função
 -- join :: [Int] -> [Int] -> [Int]
 -- que recebe duas listas e concatena as mesmas gerando uma nova lista:
 -- > join [1,2,3] [4,5,6]
 -- [1,2,3,4,5,6]
-
-
+join :: [Int] -> [Int] -> [Int]
+join [] b = b
+join (a:as) b = a : join as b
+-- join a b = a ++ b -- usando ++ fica assim
 
 -- (9) Implementar a função inverte
 -- inverte :: [Int] -> [Int]
 -- que recebe uma lista e devolve a mesma invertida
+inverte :: [Int] -> [Int]
+inverte [] = []
+inverte (x:xs) = join (inverte xs) [x]

@@ -1,7 +1,10 @@
--- Exercícios Haskell - NÚMEROS NATURAIS Semântica Formal
--- Dada a definição de números naturais a seguir:
 data Nat = Zero | Suc Nat
   deriving(Eq,Show)
+
+four = Suc (Suc (Suc (Suc(Zero))))
+three = Suc(Suc (Suc(Zero)))
+two = Suc (Suc(Zero))
+
 -- implementar as seguintes funções:
 -- (1) Implementar a função to_int que converte um Nat para um inteiro:
 to_int :: Nat -> Int
@@ -51,22 +54,17 @@ divi Zero n = Zero
 divi n Zero = error "Nao pode dividir por 0"
 divi (Suc(n1)) n2 = sub n2 (divi n1 n2)
 
--- 4 2
--- 2 - (divi n1 n2)
--- 2 - (2 - ())
--- 
-
 -- (8) Como você modificaria a função anterior para que ela retorne o resto da divisão?
 -- resto_div :: Nat -> Nat -> Nat
+lessThan :: Nat -> Nat -> Bool
+lessThan Zero Zero = False
+lessThan Zero n = True
+lessThan n Zero = False
+lessThan (Suc(n1)) (Suc(n2)) = lessThan n1 n2
 
--- (9) Como você implementaria as operações anteriores de forma a elas receberem dois Ints e
--- retornarem um Nat? Exemplo:
--- mult :: Int -> Int -> Nat
--- sub :: Int -> Int -> Nat
--- divi :: Int -> Int -> Nat
-
--- (10) Como você implementaria as operações anteriores de forma a elas receberem dois Nats e
--- retornarem um Int? Exemplo:
--- mult :: Nat-> Nat -> Int
--- sub :: Nat-> Nat -> Int
--- divi :: Nat-> Nat -> Int
+resto_div :: Nat -> Nat -> Nat
+resto_div n Zero = error "Nao pode dividir por 0"
+resto_div Zero n = Zero
+resto_div n1 n2
+  | lessThan n1 n2 = n1
+  | otherwise = resto_div (sub n1 n2) n2
